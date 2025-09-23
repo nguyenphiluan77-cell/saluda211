@@ -1,0 +1,462 @@
+/* GLOBAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior:smooth;
+}
+
+body {
+    font-family: "Oswald", sans-serif;
+
+}
+
+/* HEADER */
+
+.header {
+    /* transparent : trong suốt */
+    background-color: transparent;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 25PX 0;
+    position: absolute;
+    /* position: absolute; hiệu ứng absolute sẽ giúp banner thế vô nền chữ */
+    /* khi sử dụng position thì thanh menu sẽ bị mất chiều rộng của thanh menu do justify-content không còn hoạt động, để khắc phục bạn hãy cho with 100% */
+    width: 100%;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    /* border-bottom đường viền dưới phần tử HTML */
+}
+
+.header__menu ul {
+    list-style: none;
+
+}
+
+.header__menu ul li {
+    display: inline;
+    text-transform: uppercase;
+    /* padding:10px; 
+    cách trên trái dưới phải 10px */
+    /* padding: 10px 20px;
+    trên 10 , dưới 10 , trái 20, phải 20 */
+    padding: 5px 10px;
+
+
+    /* border: 1px solid #000; */
+    transition: all 1s;
+}
+
+/* chỉnh active màu đỏ */
+.header .header__menu .active {
+    color: #e62b4a;
+}
+
+.header .header__menu ul li:hover {
+    color: #e62b4a;
+}
+
+/* banner */
+.banner {
+    background-image: url(./../image-video/home_slider.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.banner .banner__content p {
+    font-size: 30px;
+    color: #e62b4a;
+}
+
+.banner .banner__content h1 {
+    font-size: 50px;
+    color: #e62b4a;
+}
+
+.banner .banner__content button {
+    padding: 15px 22px;
+    color: white;
+    background: #e62b4a;
+    border: none;
+    border: 1px solid #e62b4a;
+}
+
+.banner .banner__content .banner__content--scroll {
+    color: #fff;
+    font-size: 30px;
+    animation: scroll 1s infinite alternate;
+
+}
+
+/* animation tạo hiệu ứng lên xuống cho icon mũi tên*/
+/* scroll là tên vị trí icon */
+/* 1s là thời gian đi từ 0 đến 20px, infinite là lặp lại vô cùng */
+@keyframes scroll {
+    from {
+        opacity: 1;
+        /* opacity là hiệu ứng mũi tên đi xuống sẽ mờ dần và khi lặp lại sẽ rõ lại */
+        color: #fff;
+        transform: translatey(0);
+    }
+
+    to {
+        opacity: 0;
+        color: #e62b4a;
+        transform: translatey(40px);
+    }
+}
+
+/* phần2 SERVICES */
+.services {
+    background-color: black;
+    color: #fff;
+    padding: 50px 0;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+    /* margin-bottom: 30px; - khoảng cách từ chữ tới lề dư
+    font-size: 50px: cỡ chữ
+    text-align: center: canh chỉnh văn bản
+     */
+}
+
+.title p:first-child {
+    font-size: 14px;
+    color: #e62b4a;
+}
+
+.title p:last-child {
+    color: #888888;
+}
+
+.title h1 {
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.services_carousel {
+    width: 75%;
+    margin: 0 auto;
+    /* margin 0 auto có nghĩa là căn giữa và cách đều 2 bên*/
+}
+
+.services .services--group {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.services .services--group .services__carousel--item {
+    width: 80% !important;
+    background-color: #fff;
+    color: #888888;
+    padding: 30px 20px;
+    margin: 10px;
+    text-align: center;
+    /* border: 4px solid transparent; */
+    position: relative;
+}
+
+.services .services_carousel .services--group .services__carousel--item {
+    margin: 10px;
+}
+
+.services .services--group .services__carousel--item::before {
+    /* :before là phân tử giả */
+    background: transparent;
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 0%;
+    right: 0;
+    top: 0;
+    transition: all 1s;
+    /* right,top 0. có nghĩa là hiệu ứng sẽ chạy từ vị trí trên cùng bên phải */
+    /* hiệu ứng vệt màu đỏ chạy từ height 0 đến height 100% của hover */
+}
+
+.services .services--group .services__carousel--item:hover:before {
+    /* hover phần tử before giả */
+    height: 100%;
+    background: #e62b4a;
+}
+
+.services .services--group .services__carousel--item i {
+    /* chinh thẻ icon */
+    font-size: 60px;
+}
+
+.slick-dots li button:before {
+    color: #404040;
+    font-size: 20px;
+    /* chỉnh màu các nút chuyển dưới các thr item */
+}
+
+.slick-dots li button:hover::before {
+    color: white
+        /* hover cho các nút màu trắng khi click chuột */
+}
+
+.slick-dots li.slick-active button:before {
+    color: rgb(230, 43, 74);
+    /* chỉnh màu các nút chuyển dưới các thr item */
+}
+
+.slick-next:before {
+    opacity: 0;
+}
+
+.slick-prev:before {
+    opacity: 0;
+}
+
+/* articles */
+.articles {
+    padding: 80px 0;
+    width: 80%;
+    margin: 0 auto;
+    /* margin: 0 auto; canh nội dung vào trung tâm */
+}
+
+.articles_title.title p:first-child {
+    color: #888;
+}
+
+.articles .articles__content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.articles__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid red;
+    filter: grayscale(90%) contrast(0.5);
+}
+
+.articles__item {
+    position: relative;
+}
+
+.articles__item:first-child {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    /* chiếm 2 cột */
+    grid-row-start: 1;
+    grid-row-end: 3;
+    /* chiếm 2 hàng */
+}
+
+.articles__item:last-child {
+    /* grid-column-start: 3;
+    grid-column-end: 5; */
+    grid-column: 3/5;
+    /* cách 2 */
+    /* chiếm 2 cột */
+    grid-row: 3/ span 2;
+    /* cách 3 */
+    /* chiếm 2 hàng */
+}
+
+.articles__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.438);
+    opacity: 0%;
+    transition: all 1s;
+
+}
+
+.articles__overlay .icon {
+    right: 20px;
+    top: 20px;
+    position: absolute;
+    transform: translatey(20px);
+    transition: all 1s;
+    font-size: 40px;
+}
+
+.articles__overlay .title--bottom {
+    left: 20px;
+    bottom: 20px;
+    position: absolute;
+    color: antiquewhite;
+    transform: translatey(20px);
+    transition: all 1s;
+}
+
+.articles__item:hover .articles__overlay {
+    opacity: 1;
+}
+
+.articles__item:hover .title--bottom {
+    transform: translateY(0);
+}
+
+.articles__overlay:hover .icon {
+    transform: translateY(0);
+    color: black;
+}
+
+/* NUMBER */
+.number {
+    background: black;
+    padding: 80px 0;
+}
+
+.number .number_content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    color: #fff;
+}
+
+.number_content .number_item {
+    text-align: center;
+}
+
+.number_content .number_item p:first-child {
+    font-size: 80px;
+    font-weight: thin;
+}
+
+.number_content .number_item p:last-child {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* EXPERIENCE  */
+.experience {
+    padding: 80px 0;
+    background-image: url(./../image-video/bussiness_img_1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.experience .experience__title h1 {
+    color: #fff;
+}
+
+.experience .experience__content {
+    text-align: center;
+}
+
+.experience .experience__video video {
+    width: 75%;
+}
+
+/* CONTACT */
+.contact {
+    padding: 80px 0;
+}
+
+.contact .contact__main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact .contact__content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.contact .form {
+    width: 30%;
+
+}
+
+.contact .contact__main form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+
+}
+
+.contact .contact__main form input,
+.contact .contact__main form textarea {
+    padding: 20px 10px;
+}
+
+/* .contact .contact__main form textarea {
+    padding: 20px 10px;
+} */
+.contact .contact__main form button {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    transition: all 0.5s;
+}
+
+.contact .contact__main form button:hover {
+    background-color: #e72b4a;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* FOOTER */
+.footer {
+    background: #000;
+    color: #fff;
+    padding: 80px 0;
+}
+
+.footer__content {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* go--top */
+.go--top {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    background-color: #e72b4a;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 50%;
+}
+
+/* grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 100% / 4 => 25% */
+    gap: 10px;
+    /*  hkoanrg cách giữa mỗi thằng */
+
+}
+
+.grid1 {
+    background-color: #e72b4a;
+    color: #fff;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    height: 100px;
+}
